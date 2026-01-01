@@ -66,7 +66,7 @@ const WhyChooseUs = () => {
           Weaving Magic of Creativity
         </h2>
         <p className="text-lg md:text-xl text-[#a4834f] mb-16">
-          At Indian Tufted Carpets, we are driven to explore the rich realm of fibre, weave, and colour. Nestled in the heart of India's carpet-making centre, we masterfully blend timeless techniques with modern innovation to create magnificent carpets that tell stories of heritage and artistry.
+          At Indian Tufted Carpets, we are driven to explore the rich realm of fibre, weave, and colour. Nestled in the heart of Indias carpet-making centre, we masterfully blend timeless techniques with modern innovation to create magnificent carpets that tell stories of heritage and artistry.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">

@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import heroBackground from "@/public/assets/fback.jpg";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { redirect } from 'next/navigation'
 
 const fadeInUp = {
@@ -13,10 +13,11 @@ const fadeInUp = {
     transition: {
       delay: i * 0.3,
       duration: 0.8,
-      ease: "easeOut",
+      ease: [0.4, 0, 0.2, 1] as const,
     },
   }),
 };
+
 
 const HeroSection = () => {
 
