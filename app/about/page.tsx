@@ -10,7 +10,7 @@ const About = () => {
           Indian Tufted Carpets
         </h1>
         <Link
-          href="/#footer"
+          href="/#hero"
           className="flex items-center text-gray-600 hover:text-gray-900 transition"
         >
           <svg
@@ -35,7 +35,7 @@ const About = () => {
       <section className="max-w-4xl mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">About Us</h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          <span className="font-semibold">Indian Tufted Carpets</span> is a
+          <span className="font-semibold">Indian Tufted Carpets Established in the year 1977</span> is a
           mark of quality, weaving the magic of creativity and serving as an
           expert source of inspiration for producing magnificent carpets. Based
           in <span className="font-semibold">Bhadohi, Uttar Pradesh, India </span>
@@ -51,6 +51,13 @@ const About = () => {
           inspires us to push the boundaries of fibre, weave, and colour
           palettes, delivering products that combine tradition with innovation.
         </p>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          We work with premium raw materials including New Zealand wool, blended wool, 
+          natural silk, jute, viscose, and custom fibre compositions to meet diverse market requirements.
+          With decades of collective experience from yarn sourcing and dyeing to weaving and finishing 
+          we maintain strict quality control standards at every stage of production. Our focus is on consistency,
+          scalability, and timely delivery for international wholesalers, retailers, buying houses, and private labels.
+        </p><br/>
         <p className="text-lg text-gray-700 leading-relaxed">
           Whether for a boutique retailer, a global wholesaler, or a custom
           design project, we bring craftsmanship, precision, and timeless

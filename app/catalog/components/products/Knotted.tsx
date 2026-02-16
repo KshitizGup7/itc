@@ -7,20 +7,20 @@ import Image from "next/image";
 const knottedProducts = [
   {
     name: "Golden Geometry Knot",
-    image: "/productImg/knottedFull.jpg",
-    imagehover: "/productImg/knottedText.webp",
+    image: "/final/prod0.webp",
+    imagehover: "/final/prod0In.webp",
     description: "Inspired by modern architecture, this rug features a striking grid of golden ochre and cream, a true statement piece."
   },
   {
     name: "Sunburst Knot",
-    image: "/productImg/knottedFull1.jpg",
-    imagehover: "/productImg/knottedText1.jpg",
+    image: "/final/prod1.webp",
+    imagehover: "/final/prod1In.webp",
     description: "A dramatic centerpiece with a powerful sunburst motif, featuring metallic hues that capture and reflect light."
   },
   {
     name: "Canopy Knot",
-    image: "/productImg/knottedFull2.jpg",
-    imagehover: "/productImg/knottedFull2.jpg",
+    image: "/final/prod3.webp",
+    imagehover: "/final/prod3Fold.webp",
     description: "An intricate, nature-inspired design that mimics the delicate canopy of a winter forest, hand-knotted to perfection."
   },
 ];
@@ -29,18 +29,14 @@ const Knotted = () => {
   return (
     <section className="bg-cover bg-center py-12 px-4 md:px-16 bg-gradient-to-b from-[#181d20] via-[#373b3c] to-[#1b2121]" // Added padding for smaller screens
      >
-      <h2 className="text-4xl font-bold text-center text-[#f9f9f9] uppercase mb-10 tracking-wider">
-        Hand Knotted Collection
-      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {knottedProducts.map((product, idx) => (
-          <div key={idx} className="relative group overflow-hidden rounded-lg shadow-lg">
+          <div key={idx} className="relative group overflow-hidden rounded-xl shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-500 aspect-[3/4]">
             <Image
                           src={product.image}
                           alt={product.name}
-                          width={500}
-                          height={500}
+                          fill
                           className="object-cover w-full transition-opacity duration-500 group-hover:opacity-0"
                         />
                         {/* Hover Image */}

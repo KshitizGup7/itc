@@ -17,7 +17,7 @@ export default function Catalog() {
       >
         {/* Background Carpet Image (Updated) */}
         <Image
-          src="/catalog/cata2.jpeg"
+          src="/catalog/cata2.webp"
           alt="A close-up of a richly textured, traditional Indian carpet" // More descriptive alt text
           fill // ✅ Modern 'fill' prop
           className="z-0 object-cover" // ✅ Modern 'object-cover' class

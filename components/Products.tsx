@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 const Products = () => {
   useEffect(() => {
@@ -20,46 +20,51 @@ const Products = () => {
   const services = [
     {
       title: "Hand Tufted Carpets",
-      image: "/assets/products/tufted.jpg",
-      description: "Luxurious hand-tufted carpets with intricate designs and superior quality craftsmanship",
-      features: ["Custom Designs", "Premium Materials", "Various Sizes"],
+      image: "/assets/products/tufted.webp",
+      description: "High-quality hand-tufted carpets manufactured with precision and consistency to meet international standards.",
+      features: ["Custom Designs", "Premium Wool & Blends", "Various Sizes"],
     },
     {
-      title: "Hand Woven Rugs",
-      image: "/assets/products/fagestra1.jpeg",
-      description: "Traditional hand-woven rugs that showcase the finest artistry and timeless appeal",
-      features: ["Traditional Techniques", "Durable Construction", "Unique Patterns"],
+      title: "Silk & Jute Carpets",
+      image: "/assets/products/silk.webp",
+      description: "Silk and jute carpets combining natural fibres with durable construction for commercial and residential applications.",
+      features: ["Natural Fibre Compositions", "Durable Construction", "Custom Colour Matching"],
     },
     {
       title: "Hand Knotted Rugs",
-      image: "/assets/products/knotted.jpg",
-      description: "Exquisite hand-knotted rugs crafted with meticulous attention to detail and traditional artistry",
-      features: ["Master Craftsmanship", "Intricate Patterns", "Heirloom Quality"],
+      image: "/assets/products/knotted.webp",
+      description: "Hand-knotted rugs crafted using traditional techniques with strict quality control and detailed finishing.",
+      features: ["High Knot Density", "Intricate Patterns", "Heirloom Quality"],
     },
     {
-      title: "Custom Mats",
-      image: "/assets/products/custom.png",
-      description: "Specialized mats designed for various applications with attention to detail",
-      features: ["Tailored Solutions", "Quality Assurance", "Bulk Orders"],
+      title: "Custom Rugs",
+      image: "/assets/products/cumstom mat.webp",
+      description: "Made-to-order rugs developed according to client specifications, suitable for small-scale orders.",
+      features: ["Tailored Solutions", "Quality Assurance", "Private Label"],
     },
   ];
 
   return (
-    <section
-      className="py-16"
-      style={{
-        backgroundImage: `url("/assets/paper.jpg")`, // Use your subtle pattern
-        backgroundRepeat: "repeat",
-        backgroundSize: "cover",
-        //backgroundBlendMode: "soft-light",
-      }}
-    >
+    <section className="py-28 relative overflow-hidden">
+  {/* Luxury gradient base */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#f6f1e8] via-[#f1e5d1] to-[#f8f3ea] -z-20" />
+
+  {/* Subtle texture overlay */}
+  <div
+    className="absolute inset-0 -z-10"
+    style={{
+      backgroundImage: `url("/assets/paper.jpg")`,
+      backgroundRepeat: "repeat",
+      backgroundSize: "300px",
+    }}
+  />
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#644d26] mb-6">
+          <h2 className="text-5xl md:text-6xl font-semibold tracking-wide text-[#644d26] mb-6">
             Our Product Range
           </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#b08d57] to-[#e5c07b] mx-auto mt-6 rounded-full" />
           <p className="text-lg text-[#a4834f] max-w-3xl mx-auto">
             From hand-tufted carpets to hand-woven rugs and custom mats, we offer a comprehensive 
             range of premium textile products that embody excellence and tradition.
@@ -76,10 +81,11 @@ const Products = () => {
             >
               {/* Image */}
               <div className={`relative ${index % 2 === 1 ? "md:order-2" : ""}`}>
+                
                 <Image
                   src={service.image}
                   alt={service.title}
-                  className="rounded-xl shadow-lg w-full h-full object-cover"
+                  className="rounded-2xl shadow-2xl object-cover transition-transform duration-700 hover:scale-105"
                   width={500}
                   height={400}
                 />
@@ -87,7 +93,7 @@ const Products = () => {
 
               {/* Content */}
               <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                <Card className="bg-white border-l-4 border-l-[#d48300] hover:shadow-lg transition-all duration-300">
+                <Card className="bg-white/90 backdrop-blur-md border border-[#e8dcc7] rounded-2xl shadow-xl p-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="text-[#644d26] text-2xl">{service.title}</CardTitle>
                   </CardHeader>
@@ -96,7 +102,7 @@ const Products = () => {
                     <ul className="space-y-2 mt-4">
                       {service.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start text-sm text-muted-foreground">
-                          <div className="w-2 h-2 mt-1 bg-[#46433d68] rounded-full mr-3"></div>
+                          <div className="w-2 h-2 mt-2 bg-gradient-to-r from-[#b08d57] to-[#e5c07b] rounded-full mr-3"></div>
                           {feature}
                         </li>
                       ))}
@@ -109,14 +115,14 @@ const Products = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-[#644d26] rounded-xl p-10 text-center text-white" data-aos="fade-up">
+        <div className="relative bg-gradient-to-r from-[#4b3621] to-[#644d26] rounded-3xl p-16 text-center text-white overflow-hidden">
           <h3 className="text-2xl font-bold mb-4">Export Excellence</h3>
           <p className="text-lg max-w-2xl mx-auto">
             We proudly export our premium carpets and rugs worldwide, bringing the finest Indian 
-            craftsmanship to international markets with assured quality and timely delivery.
+            craftsmanship to international markets with assured quality and timely delivery. We support international wholesalers, buying houses, and retail brands with scalable production, strict quality control, and timely delivery.
           </p>
           <Button size="lg"  onClick={CatalogClick}
-          className="text-lg px-8 py-4 cursor-pointer">
+          className="mt-8 text-lg px-10 py-5 bg-[#b08d57] hover:bg-[#c69c5d] text-white rounded-full shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
             Explore Collection
           </Button>
         </div>

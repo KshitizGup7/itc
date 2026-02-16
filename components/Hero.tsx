@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import heroBackground from "@/public/assets/fback.jpg";
+import heroBackground from "@/public/assets/fback.webp";
 import { motion, type Variants } from "framer-motion";
 import { redirect } from 'next/navigation'
 
@@ -27,6 +27,9 @@ const HeroSection = () => {
   };
   const CatalogClick = () => {
      redirect('/catalog')
+  }
+  const AboutClick = () => {
+     redirect('/about')
   }
 
   return (
@@ -89,6 +92,14 @@ const HeroSection = () => {
             className="text-lg px-8 py-4 bg-white/10 border-white text-white hover:bg-[#fbfafa49] cursor-pointer"
           >
             Contact Us
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={AboutClick}
+            className="text-lg px-8 py-4 bg-white/10 border-white text-white hover:bg-[#fbfafa49] cursor-pointer"
+          >
+            About Us
           </Button>
 
 

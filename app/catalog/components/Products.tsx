@@ -8,9 +8,9 @@ import Footer from '@/components/Footer'
 const Products = () => {
   return (
     <div>
-        <Woven/>
+        
         <Tufted/>
-        <Knotted/>
+        
         <ContactSection/>
         <Footer/>
     </div>

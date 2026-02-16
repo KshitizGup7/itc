@@ -56,7 +56,7 @@ export default function ContactForm() {
               We’d love to<br />hear from you
             </h1>
             <Image
-              src="/assets/products/hand.jpg"
+              src="/assets/products/hand.webp"
               alt="Decorative Carpet"
               width={300}
               height={350}
