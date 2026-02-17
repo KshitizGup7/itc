@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "Premium handmade carpets for global markets.",
     images: [
       {
-        url: "/assets/ITCLOGO.jpg",
+        url: "/ITCLOGO.jpg",
         width: 1200,
         height: 630,
       },
