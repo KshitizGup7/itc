@@ -21,24 +21,28 @@ const Products = () => {
     {
       title: "Hand Tufted Carpets",
       image: "/assets/products/tufted.webp",
+      hover: "/assets/products/folded1.webp",
       description: "High-quality hand-tufted carpets manufactured with precision and consistency to meet international standards.",
       features: ["Custom Designs", "Premium Wool & Blends", "Various Sizes"],
     },
     {
       title: "Silk & Jute Carpets",
       image: "/assets/products/silk.webp",
+      hover: "/assets/products/folded4.webp",
       description: "Silk and jute carpets combining natural fibres with durable construction for commercial and residential applications.",
       features: ["Natural Fibre Compositions", "Durable Construction", "Custom Colour Matching"],
     },
     {
       title: "Hand Knotted Rugs",
       image: "/assets/products/knotted.webp",
+      hover: "/assets/products/folded2.webp",
       description: "Hand-knotted rugs crafted using traditional techniques with strict quality control and detailed finishing.",
       features: ["High Knot Density", "Intricate Patterns", "Heirloom Quality"],
     },
     {
       title: "Custom Rugs",
       image: "/assets/products/cumstom mat.webp",
+      hover: "/assets/products/folded3.webp",
       description: "Made-to-order rugs developed according to client specifications, suitable for small-scale orders.",
       features: ["Tailored Solutions", "Quality Assurance", "Private Label"],
     },
@@ -80,14 +84,26 @@ const Products = () => {
               data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
             >
               {/* Image */}
-              <div className={`relative ${index % 2 === 1 ? "md:order-2" : ""}`}>
+              <div className={`relative group overflow-hidden rounded-2xl mx-auto
+    w-full
+    max-w-[90%]
+    sm:max-w-[420px]
+    md:max-w-[460px]
+    lg:max-w-[500px]
+    xl:max-w-[540px] ${index % 2 === 1 ? "md:order-2" : ""}`}>
                 
                 <Image
                   src={service.image}
                   alt={service.title}
-                  className="rounded-2xl shadow-2xl object-cover transition-transform duration-700 hover:scale-105"
+                  className="rounded-2xl shadow-2xl object-cover transition-opacity duration-500 group-hover:opacity-0"
                   width={500}
                   height={400}
+                />
+                <Image
+                  src={service.hover}
+                  alt={service.title}
+                  fill
+                  className="absolute inset-0 rounded-2xl shadow-2xl object-cover opacity-0 transition-all duration-500 group-hover:opacity-100"
                 />
               </div>
 
