@@ -21,6 +21,8 @@ export default function Catalog() {
           alt="A close-up of a richly textured, traditional Indian carpet" // More descriptive alt text
           fill // ✅ Modern 'fill' prop
           className="z-0 object-cover" // ✅ Modern 'object-cover' class
+            priority
+
         />
 
         {/* Left Overlay with Text */}
