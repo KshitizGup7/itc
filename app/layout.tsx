@@ -32,8 +32,21 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Indian Tufted Carpet",
-  description: "Discover the art of Indian rug making. We manufacture and supply exquisite hand-knotted, hand-woven, and fully custom rugs for our business partners. Explore our collections designed for the discerning tastes of your clientele.",
+  description: "Discover the art of Indian rug making. We manufacture and supply exquisite hand-knotted, hand-woven, and fully custom rugs for our business partners.Explore our collections designed for the discerning tastes of your clientele.",
+  openGraph: {
+    title: "Indian Tufted Carpets",
+    description: "Premium handmade carpets for global markets.",
+    images: [
+      {
+        url: "/assets/ITCLOGO.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
+
+
 
 export default function RootLayout({
   children,
