@@ -17,6 +17,7 @@ const Products = () => {
        redirect('/catalog')
     }
 
+
   const services = [
     {
       title: "Hand Tufted Carpets",

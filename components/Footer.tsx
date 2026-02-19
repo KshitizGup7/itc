@@ -62,20 +62,18 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2">
-            <li><a href="/about" className="hover:text-gold">About Us</a></li>
-            <li><a href="/privacy-policy" className="hover:text-gold">Privacy Policy</a></li>
-            <li><a href="/terms" className="hover:text-gold">Terms & Conditions</a></li>
+            <li><a href="/about" className="inline-block transition-all duration-200 hover:text-[#b9b9b9] hover:scale-105 hover:tracking-wide">About Us</a></li>
+            <li><a href="/privacy-policy" className="inline-block transition-all duration-200 hover:text-[#b9b9b9] hover:scale-105 hover:tracking-wide">Privacy Policy</a></li>
+            <li><a href="/terms" className="inline-block transition-all duration-200 hover:text-[#b9b9b9] hover:scale-105 hover:tracking-wide">Terms & Conditions</a></li>
           </ul>
         </div>
 
         {/* Services */}
         <div>
-          <h4 className="text-lg font-semibold mb-3">Our Services</h4>
+          <h4 className="text-lg font-semibold mb-3">Read Our Blog</h4>
           <ul className="space-y-2">
-            <li>Custom Design Consultation</li>
-            <li>Bulk Order Discounts</li>
-            <li>International Shipping</li>
-            <li>Quality Guarantee</li>
+            <li><a href="/silk-carpet" className="inline-block transition-all duration-200 hover:text-[#b9b9b9] hover:scale-105 hover:tracking-wide">Silk carpet</a></li>
+            <li><a href="/Tufted-vs-Knotted" className="inline-block transition-all duration-200 hover:text-[#b9b9b9] hover:scale-105 hover:tracking-wide">Tufted vs Knotted</a></li>
           </ul>
         </div>
 
