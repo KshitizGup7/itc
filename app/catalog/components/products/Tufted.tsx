@@ -38,10 +38,10 @@ const tuftedProducts = [
     description: "Minimal leaf-outline pattern in monochrome tones, developed for contemporary and high-contrast interior programs."
   },
   {
-    name: "Tropical Crest",
+    name: "Brushed Leaves",
     code: "ITC-HT-001",
-    image: "/final/prod1.webp",
-    imagehover: "/final/prod1In.webp",
+    image: "/final/motif1.webp",
+    imagehover: "/final/motif1.webp",
     quality: "Hand Tufted",
     description: "Bold botanical-inspired design with warm accent tones, suitable for statement collections and design-led retail segments."
   },
@@ -62,10 +62,10 @@ const tuftedProducts = [
     description: "Nature-inspired abstract pattern with layered tonal depth, developed for contemporary contract and residential use."
   },
   {
-    name: "Urban Frame",
+    name: "Tuscan Floral",
     code: "ITC-HT-003",
-    image: "/final/prod8.webp",
-    imagehover: "/final/prod8Fold.webp",
+    image: "/final/motif2.webp",
+    imagehover: "/final/motif2.webp",
     quality: "Hand Tufted",
     description: "Structured geometric layout in muted neutral tones, designed for modern interior collections and large-scale export programs."
   },
