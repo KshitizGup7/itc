@@ -7,7 +7,7 @@ export default function Catalog() {
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center p-4" // Added padding for smaller screens
-      style={{ backgroundImage: "url('/catalog/potBg.jpg')" }}
+      style={{ backgroundImage: "url('/catalog/potBg.webp')" }}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -17,10 +17,10 @@ export default function Catalog() {
       >
         {/* Background Carpet Image (Updated) */}
         <Image
-          src="/catalog/cata2.webp"
+          src="/catalog/cataheader.webp"
           alt="A close-up of a richly textured, traditional Indian carpet" // More descriptive alt text
           fill // ✅ Modern 'fill' prop
-          className="z-0 object-cover" // ✅ Modern 'object-cover' class
+          className="z-0 object-fill" // ✅ Modern 'object-cover' class
             priority
 
         />
@@ -58,7 +58,7 @@ export default function Catalog() {
             Catalog
           </h2>
           <p className="mt-4 text-base md:text-lg text-gray-300">
-            Traditional artistry meets modern aesthetics. Explore our handcrafted
+            Because true luxury starts from the floor. Explore our handcrafted
             collection.
           </p>
         </motion.div>
@@ -69,3 +69,4 @@ export default function Catalog() {
     </div>
   );
 }
+

@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @tailwind utilities;
 @import 'keen-slider/keen-slider.min.css';
+@import "aos/dist/aos.css";
 
 @custom-variant dark (&:is(.dark *));
 

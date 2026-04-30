@@ -6,16 +6,16 @@ import Image from "next/image";
 
 const tuftedProducts = [
   {
-    name: "Ornate Vine",
-    code: "ITC-HK-001",
-    image: "/final/prod4.webp",
-    imagehover: "/final/prod4Fold.webp",
-    quality: "Hand Knotted",
-    description: "Traditional floral vine pattern in soft grey tones on an ivory base, suitable for hospitality and residential programs requiring neutral, versatile designs."
+    name: "Geometric Floral Sage",
+    code: "ITC-HT-001",
+    image: "/final/prod10.webp",
+    imagehover: "/final/prod10Fold.webp",
+    quality: "Hand Tufted",
+    description: "A contemporary take on traditional motifs, this rug uses a soft sage green palette. The high-low carving adds subtle texture, making the floral details pop against the angular lines."
   },
   {
     name: "Pebble Flow Black & Ivory",
-    code:"ITC-HK-002",
+    code:"ITC-HK-001",
     image: "/final/prod5.webp",
     imagehover: "/final/prod5In.webp",
     quality: "Hand Knotted",
@@ -31,7 +31,7 @@ const tuftedProducts = [
   },
   {
     name: "Linear Foliage",
-    code: "ITC-HK-003",
+    code: "ITC-HK-002",
     image: "/final/prod0.webp",
     imagehover: "/final/prod0In.webp",
     quality: "Hand Knotted",
@@ -39,42 +39,42 @@ const tuftedProducts = [
   },
   {
     name: "Brushed Leaves",
-    code: "ITC-HT-001",
-    image: "/final/motif1.webp",
-    imagehover: "/final/motif1.webp",
+    code: "ITC-HT-002",
+    image: "/final/prod4.webp",
+    imagehover: "/final/prod4Fold.webp",
     quality: "Hand Tufted",
     description: "Bold botanical-inspired design with warm accent tones, suitable for statement collections and design-led retail segments."
   },
   {
     name: "Ivy Noir",
-    code: "ITC-HK-004",
+    code: "ITC-HK-003",
     image: "/final/prod3.webp",
     imagehover: "/final/prod3Fold.webp",
     quality: "Hand Knotted",
     description: "Subtle vine pattern on a dark base with textured detailing, suited for premium and boutique interior offerings."
   },
   {
-    name: "Abstract Bark",
-    code: "ITC-HT-002",
-    image: "/final/prod7.webp",
-    imagehover: "/final/prod7In.webp",
+    name: "Abstract Terra Expressionist",
+    code: "ITC-HT-003",
+    image: "/final/prod11.webp",
+    imagehover: "/final/prod11fold.webp",
     quality: "Hand Tufted",
-    description: "Nature-inspired abstract pattern with layered tonal depth, developed for contemporary contract and residential use."
+    description: "This vibrant piece acts as floor art, utilizing an abstract, painterly design. The irregular, organic shapes mimic the look of a weathered mineral deposit or a modern impressionist canvas, adding a bold focal point to any room."
   },
   {
     name: "Tuscan Floral",
-    code: "ITC-HT-003",
+    code: "ITC-HT-004",
     image: "/final/motif2.webp",
-    imagehover: "/final/motif2.webp",
+    imagehover: "/final/motif2in.webp",
     quality: "Hand Tufted",
     description: "Structured geometric layout in muted neutral tones, designed for modern interior collections and large-scale export programs."
   },
   {
     name: "Silk Texture",
-    code: "ITC-HT-004",
+    code: "ITC-HK-004",
     image: "/final/prod9.webp",
     imagehover: "/final/prod9Fold.webp",
-    quality: "Hand Tufted Silk",
+    quality: "Hand knotted Silk",
     description: "A modern twist on timeless weaving techniques."
   },
 ];
