@@ -240,7 +240,7 @@ const WhyChooseUs = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#b08d57] to-[#e5c07b] mx-auto rounded-full mb-8" />
           <p className="text-base md:text-lg text-[#7a6645] max-w-3xl mx-auto leading-relaxed">
             At Indian Tufted Carpets, we are driven to explore the rich realm of
-            fibre, weave, and colour. Nestled in the heart of India's
+            fibre, weave, and colour. Nestled in the heart of Indias
             carpet-making centre, we masterfully blend timeless techniques with
             modern innovation to create magnificent carpets that tell stories of
             heritage and artistry.
