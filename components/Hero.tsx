@@ -226,7 +226,7 @@ const HeroSection = () => {
           <Button
             size="lg"
             onClick={() => router.push("/catalog")}
-            className="text-sm uppercase tracking-widest px-10 py-5 bg-[#b08d57] hover:bg-[#c69c5d] text-white border-0 rounded-full shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="text-sm uppercase tracking-wide px-8 py-3 bg-[#b08d57] hover:bg-[#c69c5d] text-white border-0 rounded-full shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             Explore Collection
           </Button>
@@ -234,7 +234,7 @@ const HeroSection = () => {
             variant="outline"
             size="lg"
             onClick={handleContactClick}
-            className="text-sm uppercase tracking-widest px-10 py-5 bg-white/10 border border-white/40 text-white hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer"
+            className="text-sm uppercase tracking-wide px-7 py-3 bg-white/10 border border-white/40 text-white hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer"
           >
             Get In Touch
           </Button>
@@ -242,7 +242,7 @@ const HeroSection = () => {
             variant="outline"
             size="lg"
             onClick={() => router.push("/about")}
-            className="text-sm uppercase tracking-widest px-10 py-5 bg-white/10 border border-white/40 text-white hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer"
+            className="text-sm uppercase tracking-wide px-7 py-3 bg-white/10 border border-white/40 text-white hover:bg-white/20 rounded-full transition-all duration-300 cursor-pointer"
           >
             Our Story
           </Button>
