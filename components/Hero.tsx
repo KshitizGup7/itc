@@ -193,7 +193,7 @@ const HeroSection = () => {
         <motion.h1
           variants={fadeInUp}
           custom={1}
-          className="text-5xl md:text-7xl font-bold uppercase tracking-widest text-white leading-none mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest text-white leading-none mb-6"
         >
           Indian Tufted<br className="hidden md:block" /> Carpets
         </motion.h1>
@@ -202,7 +202,7 @@ const HeroSection = () => {
         <motion.p
           variants={fadeInUp}
           custom={2}
-          className="text-lg md:text-xl text-white/95 mb-3 font-medium tracking-wide"
+          className="text-base md:text-lg text-white/95 mb-3 font-medium tracking-wide"
         >
           A mark for quality — weaving the magic of creativity
         </motion.p>
