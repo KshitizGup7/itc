@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Cormorant_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Cormorant for elegant headings — fits your luxury carpet brand perfectly
@@ -39,6 +40,7 @@ export default function RootLayout({
         `}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
