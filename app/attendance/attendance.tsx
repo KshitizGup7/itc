@@ -9,13 +9,37 @@ const MONTHS = [
   "July","August","September","October","November","December",
 ];
 
+interface PaymentEntry {
+  id: number;
+  date: string;
+  amount: number | string;
+}
+
+interface AttendanceRow {
+  staff_name: string;
+  day: number;
+  present: boolean;
+}
+
+interface PaymentRow {
+  id: number;
+  staff_name: string;
+  date: string;
+  amount: number | string;
+}
+
+interface StaffRow {
+  name: string;
+  monthly_salary: number;
+}
+
 export default function AttendanceApp() {
   const now = new Date();
-  const [pin, setPin] = useState("");
-  const [pinError, setPinError] = useState(false);
-  const [unlocked, setUnlocked] = useState(false);
-  const [month, setMonth] = useState(now.getMonth());
-  const [year, setYear] = useState(now.getFullYear());
+  const [pin, setPin] = useState<string>("");
+  const [pinError, setPinError] = useState<boolean>(false);
+  const [unlocked, setUnlocked] = useState<boolean>(false);
+  const [month, setMonth] = useState<number>(now.getMonth());
+  const [year, setYear] = useState<number>(now.getFullYear());
   const [staff, setStaff] = useState<string[]>([]);
   const [salaries, setSalaries] = useState<Record<string, number>>({});
   const [attendance, setAttendance] = useState<Record<string, boolean>>({});
@@ -23,17 +47,18 @@ export default function AttendanceApp() {
   const [newName, setNewName] = useState<string>("");
   const [shake, setShake] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [payments, setPayments] = useState<Record<string, {id: number; date: string; amount: number | string}[]>>({});
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({});       // which staff cards are open
-  const [downloaded, setDownloaded] = useState<boolean>(false); // shows Clear button after download
-  const [clearing, setClearing] = useState<boolean>(false);     // confirm state for clear
+  const [payments, setPayments] = useState<Record<string, PaymentEntry[]>>({});
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [downloaded, setDownloaded] = useState<boolean>(false);
+  const [clearing, setClearing] = useState<boolean>(false);
 
   // ─── Load staff ───
   const loadStaff = useCallback(async () => {
     const { data, error } = await supabase.from("staff").select("*").order("name");
     if (error) { console.error("Error loading staff:", error); return; }
-    setStaff(data.map((s) => s.name));
-    setSalaries(Object.fromEntries(data.map((s) => [s.name, s.monthly_salary])));
+    const rows = data as StaffRow[];
+    setStaff(rows.map((s) => s.name));
+    setSalaries(Object.fromEntries(rows.map((s) => [s.name, s.monthly_salary])));
   }, []);
 
   // ─── Load attendance ───
@@ -44,7 +69,9 @@ export default function AttendanceApp() {
       .eq("month", month).eq("year", year);
     if (error) { console.error("Error loading attendance:", error); setLoading(false); return; }
     const map: Record<string, boolean> = {};
-    data.forEach(({ staff_name, day, present }) => { map[`${staff_name}_${day}`] = present; });
+    (data as AttendanceRow[]).forEach(({ staff_name, day, present }) => {
+      map[`${staff_name}_${day}`] = present;
+    });
     setAttendance(map);
     setLoading(false);
   }, [month, year]);
@@ -55,8 +82,8 @@ export default function AttendanceApp() {
       .from("payments").select("id, staff_name, date, amount")
       .eq("month", month).eq("year", year).order("date", { ascending: true });
     if (error) { console.error("Error loading payments:", error); return; }
-    const map: Record<string, { id: number; date: string; amount: number | string }[]> = {};
-    data.forEach(({ id, staff_name, date, amount }) => {
+    const map: Record<string, PaymentEntry[]> = {};
+    (data as PaymentRow[]).forEach(({ id, staff_name, date, amount }) => {
       if (!map[staff_name]) map[staff_name] = [];
       map[staff_name].push({ id, date, amount });
     });
@@ -71,22 +98,22 @@ export default function AttendanceApp() {
   useEffect(() => { setDownloaded(false); setClearing(false); }, [month, year]);
 
   // ─── Payment actions ───
-  async function addPayment(staffName) {
+  async function addPayment(staffName: string) {
     const dateStr = new Date().toISOString().split("T")[0];
     const { data, error } = await supabase
       .from("payments")
       .insert({ staff_name: staffName, month, year, date: dateStr, amount: 0 })
       .select().single();
     if (error) { console.error("Add payment error:", error); return; }
+    const row = data as PaymentEntry;
     setPayments((prev) => ({
       ...prev,
-      [staffName]: [...(prev[staffName] || []), { id: data.id, date: dateStr, amount: "" }],
+      [staffName]: [...(prev[staffName] || []), { id: row.id, date: dateStr, amount: "" }],
     }));
-    // auto-expand the card when a row is added
     setExpanded((prev) => ({ ...prev, [staffName]: true }));
   }
 
-  async function updatePayment(staffName, id, field, value) {
+  async function updatePayment(staffName: string, id: number, field: string, value: string | number) {
     setPayments((prev) => ({
       ...prev,
       [staffName]: prev[staffName].map((p) => p.id === id ? { ...p, [field]: value } : p),
@@ -95,7 +122,7 @@ export default function AttendanceApp() {
     if (error) console.error("Update payment error:", error);
   }
 
-  async function deletePayment(staffName, id) {
+  async function deletePayment(staffName: string, id: number) {
     setPayments((prev) => ({
       ...prev,
       [staffName]: (prev[staffName] || []).filter((p) => p.id !== id),
@@ -115,16 +142,16 @@ export default function AttendanceApp() {
     setExpanded({});
   }
 
-  function getTotalPaid(staffName) {
+  function getTotalPaid(staffName: string): number {
     return (payments[staffName] || []).reduce((sum, p) => sum + (Number(p.amount) || 0), 0);
   }
 
-  function toggleExpand(name) {
+  function toggleExpand(name: string) {
     setExpanded((prev) => ({ ...prev, [name]: !prev[name] }));
   }
 
   // ─── Attendance actions ───
-  async function toggleAttendance(name, day) {
+  async function toggleAttendance(name: string, day: number) {
     const key = `${name}_${day}`;
     const newVal = !attendance[key];
     setAttendance((prev) => ({ ...prev, [key]: newVal }));
@@ -133,7 +160,7 @@ export default function AttendanceApp() {
     if (error) { console.error("Toggle error:", error); setAttendance((prev) => ({ ...prev, [key]: !newVal })); }
   }
 
-  async function markAllForDay(day, present) {
+  async function markAllForDay(day: number, present: boolean) {
     setAttendance((prev) => {
       const updated = { ...prev };
       staff.forEach((name) => { updated[`${name}_${day}`] = present; });
@@ -153,15 +180,15 @@ export default function AttendanceApp() {
     setNewName(""); loadStaff();
   }
 
-  async function removeStaff(name) {
+  async function removeStaff(name: string) {
     const { error } = await supabase.from("staff").delete().eq("name", name);
     if (error) { console.error("Remove staff error:", error); return; }
     loadStaff();
   }
 
   // ─── Helpers ───
-  function isPresent(name, day) { return !!attendance[`${name}_${day}`]; }
-  function getDaysPresent(name) { return DAYS.filter((d) => isPresent(name, d)).length; }
+  function isPresent(name: string, day: number): boolean { return !!attendance[`${name}_${day}`]; }
+  function getDaysPresent(name: string): number { return DAYS.filter((d) => isPresent(name, d)).length; }
 
   // ─── CSV Download ───
   function downloadCSV() {
@@ -177,7 +204,7 @@ export default function AttendanceApp() {
     });
 
     const payHeader = ["Staff Name", "Payment Date", "Amount (Rs)"];
-    const payRows = [];
+    const payRows: (string | number)[][] = [];
     staff.forEach((name) => {
       const entries = payments[name] || [];
       if (entries.length === 0) { payRows.push([name, "—", "0"]); }
@@ -187,8 +214,8 @@ export default function AttendanceApp() {
     payRows.push(["", "", ""]);
     payRows.push(["TOTAL PAID OUT", "", grandTotal]);
 
-    const escape = (v) => `"${String(v).replace(/"/g, '""')}"`;
-    const toCSV = (rows) => rows.map((r) => r.map(escape).join(",")).join("\n");
+    const escape = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
+    const toCSV = (rows: (string | number)[][]) => rows.map((r) => r.map(escape).join(",")).join("\n");
     const csv = [
       `ATTENDANCE — ${label}`, toCSV([attHeader, ...attRows]),
       "", "",
@@ -203,7 +230,6 @@ export default function AttendanceApp() {
     a.click();
     URL.revokeObjectURL(url);
 
-    // unlock the Clear button
     setDownloaded(true);
     setClearing(false);
   }
@@ -382,7 +408,6 @@ export default function AttendanceApp() {
         {/* ── PAYMENTS TAB ── */}
         {tab === "salary" && (
           <div>
-            {/* Grand total banner */}
             <div style={{ marginBottom: 24, background: "#1a2a3a", borderRadius: 12, padding: "20px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
               <div>
                 <div style={{ color: "#8ca0b8", fontSize: 14 }}>Total paid out — {MONTHS[month]} {year}</div>
@@ -390,7 +415,6 @@ export default function AttendanceApp() {
                   ₹{staff.reduce((sum, n) => sum + getTotalPaid(n), 0).toLocaleString()}
                 </div>
               </div>
-              {/* Clear month button — only visible after download */}
               {downloaded && (
                 <div className="slide-down">
                   {!clearing ? (
@@ -419,7 +443,6 @@ export default function AttendanceApp() {
               )}
             </div>
 
-            {/* Staff cards */}
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {staff.map((name) => {
                 const entries = payments[name] || [];
@@ -428,18 +451,13 @@ export default function AttendanceApp() {
 
                 return (
                   <div key={name} style={{ background: "#fff", borderRadius: 12, border: "1px solid #dde3eb", overflow: "hidden" }}>
-
-                    {/* ── Collapsed header row — always visible ── */}
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 22px", flexWrap: "wrap", gap: 12 }}>
-
-                      {/* Left: avatar + name + payment pills */}
                       <div style={{ display: "flex", alignItems: "center", gap: 14, flex: 1, minWidth: 0 }}>
                         <div style={{ width: 44, height: 44, borderRadius: "50%", background: "#1a6bbf", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, flexShrink: 0 }}>
                           {name.charAt(0).toUpperCase()}
                         </div>
                         <div style={{ minWidth: 0 }}>
                           <div style={{ fontSize: 17, fontWeight: 700, color: "#1a2a3a" }}>{name}</div>
-                          {/* Payment amount pills shown below name */}
                           {entries.length > 0 ? (
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 6 }}>
                               {entries.map((p) => (
@@ -453,8 +471,6 @@ export default function AttendanceApp() {
                           )}
                         </div>
                       </div>
-
-                      {/* Right: total + buttons */}
                       <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
                         <div style={{ textAlign: "right" }}>
                           <div style={{ fontSize: 11, color: "#9aabbb", marginBottom: 2 }}>Total paid</div>
@@ -476,7 +492,6 @@ export default function AttendanceApp() {
                       </div>
                     </div>
 
-                    {/* ── Expanded edit rows ── */}
                     {isOpen && entries.length > 0 && (
                       <div className="slide-down" style={{ borderTop: "1px solid #edf1f5" }}>
                         <div style={{ display: "grid", gridTemplateColumns: "200px 1fr 48px", padding: "10px 22px", background: "#fafbfc", borderBottom: "1px solid #edf1f5", gap: 12 }}>
@@ -493,7 +508,7 @@ export default function AttendanceApp() {
                             />
                             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                               <span style={{ color: "#4a6278", fontSize: 18, fontWeight: 700 }}>₹</span>
-                              <input type="number" value={p.amount} placeholder="Enter amount"
+                              <input type="number" value={p.amount as number} placeholder="Enter amount"
                                 onChange={(e) => updatePayment(name, p.id, "amount", e.target.value === "" ? "" : Number(e.target.value))}
                                 onBlur={(e) => { if (e.target.value === "") updatePayment(name, p.id, "amount", 0); }}
                                 style={{ border: "1.5px solid #cdd5de", borderRadius: 7, padding: "8px 12px", fontSize: 16, color: "#1a2a3a", fontFamily: "Georgia, serif", fontWeight: 600, background: "#fff", width: "100%", maxWidth: 220 }}
