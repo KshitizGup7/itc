@@ -16,17 +16,17 @@ export default function AttendanceApp() {
   const [unlocked, setUnlocked] = useState(false);
   const [month, setMonth] = useState(now.getMonth());
   const [year, setYear] = useState(now.getFullYear());
-  const [staff, setStaff] = useState([]);
-  const [salaries, setSalaries] = useState({});
-  const [attendance, setAttendance] = useState({});
-  const [tab, setTab] = useState("attendance");
-  const [newName, setNewName] = useState("");
-  const [shake, setShake] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [payments, setPayments] = useState({});
-  const [expanded, setExpanded] = useState({});       // which staff cards are open
-  const [downloaded, setDownloaded] = useState(false); // shows Clear button after download
-  const [clearing, setClearing] = useState(false);     // confirm state for clear
+  const [staff, setStaff] = useState<string[]>([]);
+  const [salaries, setSalaries] = useState<Record<string, number>>({});
+  const [attendance, setAttendance] = useState<Record<string, boolean>>({});
+  const [tab, setTab] = useState<string>("attendance");
+  const [newName, setNewName] = useState<string>("");
+  const [shake, setShake] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [payments, setPayments] = useState<Record<string, {id: number; date: string; amount: number | string}[]>>({});
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});       // which staff cards are open
+  const [downloaded, setDownloaded] = useState<boolean>(false); // shows Clear button after download
+  const [clearing, setClearing] = useState<boolean>(false);     // confirm state for clear
 
   // ─── Load staff ───
   const loadStaff = useCallback(async () => {
