@@ -43,7 +43,7 @@ export default function AttendanceApp() {
       .from("attendance").select("staff_name, day, present")
       .eq("month", month).eq("year", year);
     if (error) { console.error("Error loading attendance:", error); setLoading(false); return; }
-    const map = {};
+    const map: Record<string, boolean> = {};
     data.forEach(({ staff_name, day, present }) => { map[`${staff_name}_${day}`] = present; });
     setAttendance(map);
     setLoading(false);
@@ -55,7 +55,7 @@ export default function AttendanceApp() {
       .from("payments").select("id, staff_name, date, amount")
       .eq("month", month).eq("year", year).order("date", { ascending: true });
     if (error) { console.error("Error loading payments:", error); return; }
-    const map = {};
+    const map: Record<string, { id: number; date: string; amount: number | string }[]> = {};
     data.forEach(({ id, staff_name, date, amount }) => {
       if (!map[staff_name]) map[staff_name] = [];
       map[staff_name].push({ id, date, amount });
