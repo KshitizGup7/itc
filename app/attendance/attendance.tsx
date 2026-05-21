@@ -515,7 +515,7 @@ export default function AttendanceApp() {
 
             {downloaded && (
               <div style={{ marginTop: 16, color: "#9aabbb", fontSize: 13 }}>
-                ✓ CSV downloaded — "Clear {MONTHS[month]} Payments" button is now active above.
+                ✓ CSV downloaded — Clear {MONTHS[month]} Payments button is now active above.
               </div>
             )}
           </div>
