@@ -174,8 +174,6 @@ export default function CatalogGallery({
               key={c}
               style={{ scaleX: progress }}
               className="h-[1px] w-full origin-left"
-              // eslint-disable-next-line react/forbid-dom-props
-              css={undefined}
             />
           ))}
         </div>
