@@ -194,10 +194,13 @@ const filterTags = [
 
 /* Quality badge colour map */
 const badgeColor: Record<string, string> = {
-  "Hand Tufted": "bg-[#c69c5d]/20 text-[#e5c07b] border-[#c69c5d]/40",
-  "Hand Knotted": "bg-[#7c9e8a]/20 text-[#9dc4b0] border-[#7c9e8a]/40",
-  "Hand Woven": "bg-[#8c7fad]/20 text-[#b8aed4] border-[#8c7fad]/40",
-  "Hand Knotted Silk": "bg-[#b07ba0]/20 text-[#d4a8c8] border-[#b07ba0]/40",
+  "Hand Tufted": "bg-[#A67C52]/20 text-[#D8B98A] border-[#A67C52]/40",
+
+"Hand Knotted": "bg-[#536B5B]/20 text-[#A9BCA8] border-[#536B5B]/40",
+
+"Hand Woven": "bg-[#62556F]/20 text-[#B9A9C9] border-[#62556F]/40",
+
+"Hand Knotted Silk": "bg-[#7A4E5D]/20 text-[#C9A0AA] border-[#7A4E5D]/40",
 };
 
 /* ─── Card ──────────────────────────────────────────────────────────────── */
@@ -297,7 +300,20 @@ const Tufted = () => {
       : tuftedProducts.filter((p) => p.quality === activeFilter);
 
   return (
-    <section className="relative min-h-screen py-24 px-4 md:px-16 overflow-hidden">
+    <section
+  className="
+    relative
+    min-h-screen
+    py-14
+    sm:py-18
+    md:py-24
+    px-4
+    sm:px-6
+    md:px-10
+    lg:px-16
+    overflow-hidden
+  "
+>
       {/* ── Background ── */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#141918] via-[#1e2422] to-[#111615] -z-20" />
 
@@ -324,43 +340,44 @@ const Tufted = () => {
           className="text-center mb-6"
         >
           {/* Eyebrow */}
-          <p className="text-[#b08d57] text-xs uppercase tracking-[0.35em] mb-4 font-medium">
-            Handcrafted in India · Export Ready
-          </p>
-          {/* Decorative rule */}
-          <div className="flex items-center justify-center gap-4 mt-6 mb-4">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#b08d57]" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[#c69c5d]" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#b08d57]" />
-          </div>
+          <p className="text-[#eee9e2] text-xs uppercase tracking-[0.35em] mb-4 font-medium">
+  Handcrafted in India · Export Ready
+</p>
 
-          <p className="text-[#a09080] text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Each piece is individually crafted — no two rugs are identical.
-            Browse by technique or explore the full range.
-          </p>
+{/* Decorative rule */}
+<div className="flex items-center justify-center gap-4 mt-6 mb-4">
+  <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#756F66]" />
+  <div className="w-1.5 h-1.5 rounded-full bg-[#A69F94]" />
+  <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#756F66]" />
+</div>
+
+<p className="text-[#9A948B] text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+  Each piece is individually crafted — no two rugs are identical.
+  Browse by technique or explore the full range.
+</p>
         </motion.div>
 
         {/* ── Filter tabs ── */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-14"
-        >
-          {filterTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setActiveFilter(tag)}
-              className={`px-5 py-2 text-xs uppercase tracking-[0.18em] rounded-full border transition-all duration-300 cursor-pointer ${
-                activeFilter === tag
-                  ? "bg-[#c69c5d] border-[#c69c5d] text-[#1a1410] font-semibold shadow-lg shadow-[#c69c5d]/20"
-                  : "bg-transparent border-[#5a4a38] text-[#9a8060] hover:border-[#c69c5d]/60 hover:text-[#e0c080]"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </motion.div>
+  initial={{ opacity: 0, y: 12 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="hidden md:flex flex-wrap justify-center gap-2 mb-14"
+>
+  {filterTags.map((tag) => (
+    <button
+      key={tag}
+      onClick={() => setActiveFilter(tag)}
+      className={`px-5 py-2 text-xs uppercase tracking-[0.18em] rounded-full border transition-all duration-300 cursor-pointer ${
+        activeFilter === tag
+          ? "bg-[#E8E3DA] border-[#E8E3DA] text-[#1C1B19] font-semibold"
+          : "bg-transparent border-[#625E58] text-[#A7A198] hover:border-[#9A948B] hover:text-[#D0CAC0]"
+      }`}
+    >
+      {tag}
+    </button>
+  ))}
+</motion.div>
 
         {/* ── Count indicator ── */}
         <div className="text-right mb-6 pr-1">
